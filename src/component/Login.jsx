@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/logoshop.png'
-
+import { NavLink } from 'react-router-dom'
 const Login = () => {
   return (
     <div className='container mt-2' style={{height: 600}}>
@@ -17,7 +17,7 @@ const Login = () => {
                     <div>
                         <button className='btn btn-success my-2' style={{width:200}}>Login</button>
                         <div>                     
-                        <a href="/register"> <button className='btn btn-outline-success' style={{width:200}}> SignUp</button></a>
+                        <NavLink to="/register"> <button className='btn btn-outline-success' style={{width:200}}> SignUp</button></NavLink>
                         </div>                      
                     </div>                  
                 </div>

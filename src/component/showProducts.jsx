@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Skeleton from 'react-loading-skeleton'
 import {NavLink} from 'react-router-dom'
-import Contact from './contact'
 
 
 const ShowProducts = () => {

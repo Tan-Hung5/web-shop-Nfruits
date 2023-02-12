@@ -33,6 +33,12 @@ function Nav() {
     setShowSearch(!showSearch);
   }
 
+  const handleBlur = (e) => {
+    setSearchTerm("")
+    setSearchResults([])
+    setShowSearch(false)
+  }
+
   const onchange = (e) => {
     setSearchTerm(e.target.value);
     if (!e.target.value) return (
@@ -79,12 +85,14 @@ function Nav() {
               <div className='position-relative'>
                 {showSearch && (
 
-                  <input type="text" className=" rounded search" placeholder="Search..."
+                  <input type="text" onBlur={(e) => handleBlur(e)} className=" rounded search" placeholder="Search..."
                     onChange={(e) => onchange(e)}
                     value={searchTerm}
                     aria-describedby="button-addon1" />
                 )}
-                <ul className="list-group list-search position-absolute">
+                 
+                <ul className="list-group list-search position-absolute " style={{width:250}}>
+                  <div>
                   {loading ? (
                     <Loading />
                   ) : searchResults && (
@@ -93,16 +101,18 @@ function Nav() {
                       let href = `/products/${item.name}`
                       return (
                         <li className='list-group-item' key={item.name}>
-                          <a href={href}>
+                          <NavLink to={href}>
                             <span><img src={img} width={50} height={50} alt="img" /></span> |
                             <span>{item.name}</span>
-                          </a>
+                          </NavLink>
                         </li>
                       )
                     })
                   )
                   }
+                 </div> 
                 </ul>
+                
               </div>
 
             </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/logoshop.png'
+import {NavLink} from 'react-router-dom'
 
 const Signup = () => {
   return (
@@ -20,7 +21,7 @@ const Signup = () => {
                     <div>
                         <button className='btn btn-success my-3' style={{width:200}}>SignUp</button>
                         <div>
-                        <a href="/login"> <button className='btn btn-outline-success' style={{width:200}}>Login</button></a>
+                        <NavLink to="/login"> <button className='btn btn-outline-success' style={{width:200}}>Login</button></NavLink>
                         </div>
                     </div>
                   

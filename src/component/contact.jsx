@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../assets/logoshop.png'
 import '../sass/component-sass/contact.scss'
-
+import { NavLink } from 'react-router-dom'
 
 const  Contact = () => {
   return (
@@ -28,10 +28,9 @@ const  Contact = () => {
             <div className="col">
                 <ul class="list-group">
                     <li class=" fs-4">Links</li>
-                    <li class=""><a href="/">Home</a></li>
-                    <li class=""><a href="/products">Products</a></li>
-                    <li class=""><a href="/cart">Cart</a></li>
-                  
+                    <li class=""><NavLink to="/">Home</NavLink></li>
+                    <li class=""><NavLink to="/products">Products</NavLink></li>
+                    <li class=""><NavLink to="/cart">Cart</NavLink></li>                
                 </ul>
             </div>
             
