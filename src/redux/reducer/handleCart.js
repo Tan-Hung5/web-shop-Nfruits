@@ -23,10 +23,8 @@ const HandleCart = (state = cart , action) => {
         
         case 'DELITEM':
             const exist1 = state.find((x)=> x.name === product.name)
-            if(exist1.qty === 1){
+            if(exist1){
                 return state.filter((x)=> x.name !== exist1.name)
-            }else {
-                return state.map((x)=> x.name === product.name ? {...x, qty: x.qty-1} : x)
             }
             break;
         default:

@@ -16,7 +16,7 @@ function Nav() {
 
   const fetchData = async () => {
     setLoading(true)
-    const api_response = await axios.get('https://api.predic8.de/shop/products/?limit=13');
+    const api_response = await axios.get('https://api.predic8.de/shop/products/?limit=12');
     const productUrls = api_response.data.products.map(product => product.product_url);
     const productPromises = productUrls.map(url => axios.get(`https://api.predic8.de${url}`));
     const products = await Promise.all(productPromises);
@@ -78,41 +78,40 @@ function Nav() {
               </li>
 
             </ul>
-            <div>
+            <div >
               <button onClick={handleClick} className='border border-0 btn bi bi-search' id="button-addon1"  >
 
               </button>
-              <div className='position-relative'>
+              <div className='position-relative search'>
                 {showSearch && (
-
-                  <input type="text" onBlur={(e) => handleBlur(e)} className=" rounded search" placeholder="Search..."
-                    onChange={(e) => onchange(e)}
-                    value={searchTerm}
-                    aria-describedby="button-addon1" />
+                  <div >
+                    <input type="text" className=" rounded search" placeholder="Search..."
+                      onChange={(e) => onchange(e)}
+                      value={searchTerm}
+                      aria-describedby="button-addon1" />
+                    <ul className="list-group list-search position-absolute " style={{ width: 250 }}>
+                      <div>
+                        {loading ? (
+                          <Loading />
+                        ) : searchResults && (
+                          searchResults.map(item => {
+                            let img = `https://api.predic8.de${item.photo_url}`
+                            let href = `/products/${item.name}`
+                            return (
+                              <li className='list-group-item' key={item.name} onBlur={(e) => handleBlur(e)}>
+                                <NavLink to={href}>
+                                  <span><img src={img} width={50} height={50} alt="img" /></span> |
+                                  <span>{item.name}</span>
+                                </NavLink>
+                              </li>
+                            )
+                          })
+                        )
+                        }
+                      </div>
+                    </ul>
+                  </div>
                 )}
-                 
-                <ul className="list-group list-search position-absolute " style={{width:250}}>
-                  <div>
-                  {loading ? (
-                    <Loading />
-                  ) : searchResults && (
-                    searchResults.map(item => {
-                      let img = `https://api.predic8.de${item.photo_url}`
-                      let href = `/products/${item.name}`
-                      return (
-                        <li className='list-group-item' key={item.name}>
-                          <NavLink to={href}>
-                            <span><img src={img} width={50} height={50} alt="img" /></span> |
-                            <span>{item.name}</span>
-                          </NavLink>
-                        </li>
-                      )
-                    })
-                  )
-                  }
-                 </div> 
-                </ul>
-                
               </div>
 
             </div>

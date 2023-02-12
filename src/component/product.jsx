@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton'
 import { useSelector, useDispatch } from 'react-redux'
 import {addCart} from '../redux/action/index'
-
+import {toast,ToastContainer} from 'react-toastify'
 
 const Product = () => {
     const {name} = useParams()
@@ -19,10 +19,9 @@ const Product = () => {
         dispatch(addCart(product))
     }
 
-
     const fetchData = async () => {
         setLoading(true)
-        const api_response = await axios.get('https://api.predic8.de/shop/products/?limit=13');
+        const api_response = await axios.get('https://api.predic8.de/shop/products/?limit=12');
         const productUrls = api_response.data.products.map(product => product.product_url);
         const productPromises = productUrls.map(url => axios.get(`https://api.predic8.de${url}`));
         const products = await Promise.all(productPromises);
@@ -62,13 +61,15 @@ const Product = () => {
                 <div className="col-md-3 py-5  ms-4">
                     <h4 className='display-5 col-6'>{data.name || <Skeleton/>}</h4>
                     <h3 className="display-6 fw-bold my-4 placeholder-glow">$ {data.price || <Skeleton/>}</h3>
-                    <button className="btn btn-outline-dark mt-2 me-2 placeholder-glow" onClick={()=>addProduct(data)}>
+                    <button className="btn btn-outline-dark mt-2 me-2 placeholder-glow" onClick={()=>addProduct(data)}  >
                         add to cart
                     </button>
+                    
                     <NavLink className="btn btn-dark mt-2 placeholder-glow" to='/cart'>
                         go to cart
                     </NavLink>
                 </div>
+                
                
             </>
         )

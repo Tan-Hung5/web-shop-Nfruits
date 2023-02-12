@@ -12,7 +12,7 @@ const ShowProducts = () => {
 
   const fetchData = async () => {
     setLoading(true)
-    const api_response = await axios.get('https://api.predic8.de/shop/products/?limit=13');
+    const api_response = await axios.get('https://api.predic8.de/shop/products/?limit=12');
     const productUrls = api_response.data.products.map(product => product.product_url);
     const productPromises = productUrls.map(url => axios.get(`https://api.predic8.de${url}`));
     const products = await Promise.all(productPromises);
