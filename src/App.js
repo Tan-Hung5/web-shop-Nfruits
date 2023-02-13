@@ -8,7 +8,7 @@ import ShoppingCart from './component/cart'
 import Contact from './component/contact'
 import Login from './component/Login'
 import Signup from './component/Signup'
-import { ToastContainer } from 'react-toastify'
+
 
 function App() {
   return (
