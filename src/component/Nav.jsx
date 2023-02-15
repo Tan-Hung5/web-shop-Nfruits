@@ -13,6 +13,7 @@ function Nav() {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [productData, setProductData] = useState([]);
+  const [showResults, setShowResults] = useState(false)
 
   const fetchData = async () => {
     setLoading(true)
@@ -33,10 +34,14 @@ function Nav() {
     setShowSearch(!showSearch);
   }
 
+  const setResults = (e) => {
+    setShowResults(true)
+  }
+
   const handleBlur = (e) => {
     setSearchTerm("")
-    setSearchResults([])
-    setShowSearch(false)
+    setShowResults(false)
+   
   }
 
   const onchange = (e) => {
@@ -78,43 +83,44 @@ function Nav() {
               </li>
 
             </ul>
-            <div >
-              <button onClick={handleClick} className='border border-0 btn bi bi-search' id="button-addon1"  >
+            <button onClick={handleClick} className='border border-0 btn bi bi-search' id="button-addon1"  >
 
-              </button>
-              <div className='position-relative search'>
-                {showSearch && (
-                  <div >
-                    <input type="text" className=" rounded search" placeholder="Search..."
+            </button>
+            <div className='position-relative search' onMouseDown={(e) => handleBlur(e)}>
+              {showSearch && (
+
+                    <input type="text"  className=" rounded search" placeholder="Search..."
                       onChange={(e) => onchange(e)}
                       value={searchTerm}
-                      aria-describedby="button-addon1" />
-                    <ul className="list-group list-search position-absolute " style={{ width: 250 }}>
-                      <div>
-                        {loading ? (
-                          <Loading />
-                        ) : searchResults && (
-                          searchResults.map(item => {
-                            let img = `https://api.predic8.de${item.photo_url}`
-                            let href = `/products/${item.name}`
-                            return (
-                              <li className='list-group-item' key={item.name} onBlur={(e) => handleBlur(e)}>
-                                <NavLink to={href}>
-                                  <span><img src={img} width={50} height={50} alt="img" /></span> |
-                                  <span>{item.name}</span>
-                                </NavLink>
-                              </li>
-                            )
-                          })
-                        )
-                        }
-                      </div>
-                    </ul>
-                  </div>
-                )}
-              </div>
-
+                      aria-describedby="button-addon1" 
+                      onFocus={(e) => setResults(e)}/>
+                   
+              )}
+              {showResults && (
+                 <ul className="list-group list-search position-absolute " style={{ width: 250 }}>
+                 <div>
+                   {loading ? (
+                     <Loading />
+                   ) : searchResults && (
+                     searchResults.map(item => {
+                       let img = `https://api.predic8.de${item.photo_url}`
+                       let href = `/products/${item.name}`
+                       return (
+                         <li className='list-group-item' key={item.name} >
+                           <a to={href}>
+                             <span><img src={img} width={50} height={50} alt="img" /></span> |
+                             <span>{item.name}</span>
+                           </a>
+                         </li>
+                       )
+                     })
+                   )
+                   }
+                 </div>
+               </ul>
+              )}
             </div>
+
             <div className="buttons">
               <NavLink to="/login" className="btn ms-2">
                 <i className='fa fa-sign-in me-1 '></i> Login </NavLink>

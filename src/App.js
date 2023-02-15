@@ -16,12 +16,12 @@ function App() {
     
         <Nav/>
         <Routes>
-          <Route exact path='/' element={<Home/>}/>
-          <Route exact path='/products' element={<Products/>}/>
-          <Route exact path='/products/:name' element={<Product/>}/>
-          <Route excat path='/cart' element={<ShoppingCart/>}/>
-          <Route excat path='/login' element={<Login/>}/>
-          <Route excat path='/register' element={<Signup/>}/>
+          <Route exact path='/wed-shop-Nfruits' element={<Home/>}/>
+          <Route  path='/products' element={<Products/>}/>
+          <Route  path='/products/:name' element={<Product/>}/>
+          <Route  path='/cart' element={<ShoppingCart/>}/>
+          <Route  path='/login' element={<Login/>}/>
+          <Route  path='/register' element={<Signup/>}/>
         </Routes>
         <Contact/>
         
