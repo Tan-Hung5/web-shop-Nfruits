@@ -80,7 +80,7 @@ function Nav() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link active fs-4" aria-current="page" to="/">Home</NavLink>
+                <NavLink className="nav-link active fs-4" aria-current="page" to="/wed-shop-Nfruits">Home</NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link fs-4" to="/products">Product</NavLink>

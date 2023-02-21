@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/wed-shop-Nfruits/static/css/main.49d4e006.css",
-    "main.js": "/wed-shop-Nfruits/static/js/main.c49a34c0.js",
+    "main.css": "/wed-shop-Nfruits/static/css/main.dd259e22.css",
+    "main.js": "/wed-shop-Nfruits/static/js/main.a353d5d3.js",
     "static/js/787.36d33203.chunk.js": "/wed-shop-Nfruits/static/js/787.36d33203.chunk.js",
     "static/media/background.jpg": "/wed-shop-Nfruits/static/media/background.217bae9360b0da359b41.jpg",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/wed-shop-Nfruits/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
@@ -11,12 +11,12 @@
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/wed-shop-Nfruits/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "static/media/logoshop.png": "/wed-shop-Nfruits/static/media/logoshop.7bc589903089f012ea31.png",
     "index.html": "/wed-shop-Nfruits/index.html",
-    "main.49d4e006.css.map": "/wed-shop-Nfruits/static/css/main.49d4e006.css.map",
-    "main.c49a34c0.js.map": "/wed-shop-Nfruits/static/js/main.c49a34c0.js.map",
+    "main.dd259e22.css.map": "/wed-shop-Nfruits/static/css/main.dd259e22.css.map",
+    "main.a353d5d3.js.map": "/wed-shop-Nfruits/static/js/main.a353d5d3.js.map",
     "787.36d33203.chunk.js.map": "/wed-shop-Nfruits/static/js/787.36d33203.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.49d4e006.css",
-    "static/js/main.c49a34c0.js"
+    "static/css/main.dd259e22.css",
+    "static/js/main.a353d5d3.js"
   ]
 }
