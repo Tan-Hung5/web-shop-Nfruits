@@ -3,7 +3,7 @@ import Logo from './logo/logo';
 import { NavLink } from 'react-router-dom'
 import '../sass/main.scss';
 import { useSelector } from 'react-redux'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 function Nav() {
@@ -14,6 +14,7 @@ function Nav() {
   const [loading, setLoading] = useState(false);
   const [productData, setProductData] = useState([]);
   const [showResults, setShowResults] = useState(false)
+  const productListRef = useRef(null);
 
   const fetchData = async () => {
     setLoading(true)
@@ -28,21 +29,27 @@ function Nav() {
 
   useEffect(() => {
     fetchData();
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   const handleClick = () => {
     setShowSearch(!showSearch);
+    setSearchResults([])
+    setSearchTerm("")
   }
 
   const setResults = (e) => {
     setShowResults(true)
   }
 
-  const handleBlur = (e) => {
-    setSearchTerm("")
-    setShowResults(false)
-   
-  }
+  const handleClickOutside = (event) => {
+    if (productListRef.current && !productListRef.current.contains(event.target)) {
+      setSearchResults([])
+    }
+  };
 
   const onchange = (e) => {
     setSearchTerm(e.target.value);
@@ -86,7 +93,7 @@ function Nav() {
             <button onClick={handleClick} className='border border-0 btn bi bi-search' id="button-addon1"  >
 
             </button>
-            <div className='position-relative search' onMouseDown={(e) => handleBlur(e)}>
+            <div className='position-relative search' >
               {showSearch && (
 
                     <input type="text"  className=" rounded search" placeholder="Search..."
@@ -97,7 +104,7 @@ function Nav() {
                    
               )}
               {showResults && (
-                 <ul className="list-group list-search position-absolute " style={{ width: 250 }}>
+                 <ul className="list-group list-search position-absolute "  style={{ width: 250 }}>
                  <div>
                    {loading ? (
                      <Loading />
@@ -106,8 +113,8 @@ function Nav() {
                        let img = `https://api.predic8.de${item.photo_url}`
                        let href = `/products/${item.name}`
                        return (
-                         <li className='list-group-item' key={item.name} >
-                           <a to={href}>
+                         <li className='list-group-item'  ref={productListRef} key={item.name}  >
+                           <a href={href}>
                              <span><img src={img} width={50} height={50} alt="img" /></span> |
                              <span>{item.name}</span>
                            </a>

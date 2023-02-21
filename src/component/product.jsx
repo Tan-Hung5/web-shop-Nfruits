@@ -6,7 +6,9 @@ import { NavLink } from 'react-router-dom'
 import Skeleton from 'react-loading-skeleton'
 import { useSelector, useDispatch } from 'react-redux'
 import {addCart} from '../redux/action/index'
-import {toast,ToastContainer} from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Product = () => {
     const {name} = useParams()
@@ -17,6 +19,7 @@ const Product = () => {
     const dispatch = useDispatch()
     const addProduct = (product) => {
         dispatch(addCart(product))
+        toast.success('Add success');
     }
 
     const fetchData = async () => {
@@ -69,8 +72,6 @@ const Product = () => {
                         go to cart
                     </NavLink>
                 </div>
-                
-               
             </>
         )
     }
@@ -82,6 +83,18 @@ const Product = () => {
         <div className="row justify-content-center">
             {loading ? <Loading/> : <Show_product/>}
         </div>
+        <ToastContainer
+            position="top-center"
+            autoClose={1000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+        />
     </div>
   )
 }
