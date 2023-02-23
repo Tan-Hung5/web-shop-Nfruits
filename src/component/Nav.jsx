@@ -51,6 +51,8 @@ function Nav() {
     }
   };
 
+
+
   const onchange = (e) => {
     setSearchTerm(e.target.value);
     if (!e.target.value) return (
@@ -63,6 +65,7 @@ function Nav() {
     setSearchResults(results);
   }
   console.log('dataresults', searchResults)
+
   const Loading = () => {
     return (
       <div></div>
@@ -73,7 +76,7 @@ function Nav() {
       <nav className="navbar navbar-expand-lg bg-light bg-white by-3 shadow-sm">
 
         <div className="container">
-          <NavLink className="navbar-brand fs-4" to="/"><Logo /></NavLink>
+          <NavLink className="navbar-brand fs-4" to="/wed-shop-Nfruits"><Logo /></NavLink>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -111,13 +114,13 @@ function Nav() {
                    ) : searchResults && (
                      searchResults.map(item => {
                        let img = `https://api.predic8.de${item.photo_url}`
-                       let href = `/products/${item.name}`
+                       let href = item.name
                        return (
                          <li className='list-group-item'  ref={productListRef} key={item.name}  >
-                           <a href={href}>
+                           <NavLink to={`/products/${href}`}>
                              <span><img src={img} width={50} height={50} alt="img" /></span> |
                              <span>{item.name}</span>
-                           </a>
+                           </NavLink>
                          </li>
                        )
                      })
