@@ -9,7 +9,7 @@ const  Contact = () => {
         <div className='  border contact '>
         <div className=" row px-5 ">
             <div className="col .bg-light-subtle">
-                <a href='/wed-shop-Nfruits' className='bold fs-4'><img src={logo} width={100} height={100} className='logo-contact fs-2' alt="logo" />Nfruit Shop</a>
+                <a href='/web-shop-Nfruits' className='bold fs-4'><img src={logo} width={100} height={100} className='logo-contact fs-2' alt="logo" />Nfruit Shop</a>
                 <div>
                     <a href="#"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#" className='mx-3'><i class="fa-brands fa-twitter"></i></a>
@@ -28,7 +28,7 @@ const  Contact = () => {
             <div className="col">
                 <ul class="list-group">
                     <li class=" fs-4">Links</li>
-                    <li class=""><NavLink to="/wed-shop-Nfruits">Home</NavLink></li>
+                    <li class=""><NavLink to="/web-shop-Nfruits">Home</NavLink></li>
                     <li class=""><NavLink to="/products">Products</NavLink></li>
                     <li class=""><NavLink to="/cart">Cart</NavLink></li>                
                 </ul>
